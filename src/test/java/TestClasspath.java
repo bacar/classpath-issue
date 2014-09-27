@@ -49,8 +49,6 @@ public class TestClasspath {
     public void urlHandlerTest() throws MalformedURLException, ClassNotFoundException {
         System.setProperty("java.protocol.handler.pkgs", "etc");
 
-        Class.forName("etc.thing.Handler");
-
         URL u = new URL("thing:foo");
     }
 
