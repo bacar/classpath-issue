@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -43,4 +44,14 @@ public class TestClasspath {
         //fails, but only if dynamic.classpath=true
         assertNotNull(ClassLoader.class.getResource("/resource.txt"));
     }
+
+    @Test
+    public void urlHandlerTest() throws MalformedURLException, ClassNotFoundException {
+        System.setProperty("java.protocol.handler.pkgs", "etc");
+
+        Class.forName("etc.thing.Handler");
+
+        URL u = new URL("thing:foo");
+    }
+
 }
